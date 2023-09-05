@@ -1,0 +1,14 @@
+STEP 1:
+
+Open the excel file named "Read_this_Excel".
+Select values according to your choice from the drop-down menu.
+Save the excel file and exit.
+
+
+STEP 2:
+
+Double click the python file named "Tractor_Model_Code(Merging_Excel_and_XML)".
+
+
+STEP 3:
+Run the simulation model by double clicking the file named "Tractor_Model.mvs".

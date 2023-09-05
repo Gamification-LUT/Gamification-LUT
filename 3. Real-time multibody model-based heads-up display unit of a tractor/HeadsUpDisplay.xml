@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?Mevea_Task_Editor v0.0?>
+<DMInputFile>
+  <TaskDefinitions>
+    <TaskGroups>
+      <Scenario_HeadsUpDisplay Tasks="Task_HeadsUpDisplay;Task_LowFuelMessage;Task_RolloverMessage;;;Task_ForwardGearDisplay;Task_ReverseGearDisplay;" description="Defining HUD Units" image="" />
+    </TaskGroups>
+    <Tasks>
+      <Task_HeadsUpDisplay maximumduration_as_cerror="No" TaskFaults="" maximumduration="20000" isContinuous="Yes" isActive="No" Trackers="" ErrorConditions="" hasTimer="No" EndConditions="" ReStoreParticleStateFromFile="" StartConditionNames="" recordResultsInterval="1.0" CriticalEndConditions="" endSimulationOnCriticalError="No" StoreParticleStateToFile="" ActivateParticleGroup="">
+        <WaitForStartInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <StartInstructions Text="" HudImage="" ImageCollection="" Graphic="" Meter="Tachometer_Digital;Tachometer_Analog;Speedometer_Analog;FuelIndicator_Analog;;InclinometerRoll_Digital;InclinometeRoll_Analog;Speedometer_Digital_New;BucketTiltAngle_Analog;BucketHeightPosition_Analog;BucketHeight_Analog;MaterialWeight_Digital" Sound="" />
+        <EndInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <ErrorInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <CriticalErrorInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <GeneralInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+      </Task_HeadsUpDisplay>
+      <Task_LowFuelMessage maximumduration_as_cerror="Yes" TaskFaults="" maximumduration="3000" isContinuous="Yes" isActive="No" Trackers="" ErrorConditions="" hasTimer="No" EndConditions="" ReStoreParticleStateFromFile="" StartConditionNames="Condition_LowFuel" recordResultsInterval="1.0" CriticalEndConditions="" endSimulationOnCriticalError="Yes" StoreParticleStateToFile="" ActivateParticleGroup="">
+        <WaitForStartInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <StartInstructions Text="" HudImage="Hud_LowFuel" ImageCollection="" Graphic="" Sound="" />
+        <EndInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <ErrorInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <CriticalErrorInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <GeneralInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+      </Task_LowFuelMessage>
+      <Task_RolloverMessage maximumduration_as_cerror="Yes" TaskFaults="" maximumduration="3000" isContinuous="Yes" isActive="No" Trackers="" ErrorConditions="" hasTimer="No" EndConditions="" ReStoreParticleStateFromFile="" StartConditionNames="Condition_InclinometerCritical" recordResultsInterval="1.0" CriticalEndConditions="" endSimulationOnCriticalError="Yes" StoreParticleStateToFile="" ActivateParticleGroup="">
+        <WaitForStartInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <StartInstructions Text="" HudImage="Hud_InclinometerCritical" ImageCollection="" Graphic="" Sound="" />
+        <EndInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <ErrorInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <CriticalErrorInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <GeneralInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+      </Task_RolloverMessage>
+      <Task_ForwardGearDisplay maximumduration_as_cerror="No" TaskFaults="" maximumduration="20000" isContinuous="Yes" isActive="No" Trackers="" ErrorConditions="" hasTimer="No" EndConditions="" ReStoreParticleStateFromFile="" StartConditionNames="" recordResultsInterval="1.0" CriticalEndConditions="" endSimulationOnCriticalError="No" StoreParticleStateToFile="" ActivateParticleGroup="">
+        <WaitForStartInstructions Text="" HudImage="" ImageCollection="" Graphic="" Meter="" Sound="" />
+        <StartInstructions Text="" HudImage="Hud_GearBox" ImageCollection="" Graphic="" Meter="ForwardGearIndicator" Sound="" />
+        <EndInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <ErrorInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <CriticalErrorInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <GeneralInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+      </Task_ForwardGearDisplay>
+      <Task_ReverseGearDisplay maximumduration_as_cerror="No" TaskFaults="" maximumduration="20000" isContinuous="Yes" isActive="No" Trackers="" ErrorConditions="" hasTimer="No" EndConditions="" ReStoreParticleStateFromFile="" StartConditionNames="" recordResultsInterval="1.0" CriticalEndConditions="" endSimulationOnCriticalError="No" StoreParticleStateToFile="" ActivateParticleGroup="">
+        <WaitForStartInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <StartInstructions Text="" HudImage="" ImageCollection="" Graphic="" Meter="ReverseGearIndicator" Sound="" />
+        <EndInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <ErrorInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <CriticalErrorInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+        <GeneralInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+      </Task_ReverseGearDisplay>
+    </Tasks>
+    <Conditions>
+      <ValueConditions>
+        <Condition_InclinometerCritical primName="DS_InclinometerCritical" subType="DataSource" limitType="Greater" holdTime="1" valueLimit="26" />
+        <Condition_LowFuel primName="DS_FuelIndicator" subType="DataSource" limitType="Less" holdTime="1" valueLimit="0.1" />
+        <Condition_NeutralGear_On primName="DS_GearIndicator" subType="DataSource" limitType="Equal" holdTime="0" valueLimit="0" />
+        <Condition_NeutralGear_Off primName="DS_GearIndicator" subType="DataSource" limitType="Not" holdTime="0" valueLimit="0" />
+        <Condition_ParkingBrake_On primName="DS_BrakeInputValue" subType="DataSource" limitType="Not" holdTime="0" valueLimit="-1" />
+        <Condition_ParkingBrake_Off primName="DS_BrakeInputValue" subType="DataSource" limitType="Equal" holdTime="0" valueLimit="-1" />
+        <Condition_ForwardGear_On primName="DS_GearIndicator" subType="DataSource" limitType="Greater" holdTime="0" valueLimit="0" />
+        <Condition_ForwardGear_Off primName="DS_GearIndicator" subType="DataSource" limitType="Equal" holdTime="0" valueLimit="0" />
+        <Condition_ReverseGear_On primName="DS_ReverseGearIndicator" subType="DataSource" limitType="Not" holdTime="0" valueLimit="0" />
+        <Condition_ReverseGear_Off primName="DS_ReverseGearIndicator" subType="DataSource" limitType="Equal" holdTime="0" valueLimit="0" />
+      </ValueConditions>
+    </Conditions>
+    <VisualHelpers>
+      <Meters>
+        <Tachometer_Digital height="200" type="Number Display" background_image="../Graphics/HeadsUpDisplay/ImageofNothing_revpmin.png" width="200" y="0.34" x="0.29">
+          <Value position_y="80" height="40" font="" font_color="0.94921875;0.56640625;0;1" alignment="CENTER_CENTER" width="40" position_x="80" variable="DS_Tachometer" static="No" display_zeros="No" numdecimals="1" />
+        </Tachometer_Digital>
+        <Tachometer_Analog gauge_min_angle="-135.0" max_value="3000.0" gauge_tap_image="../Graphics/HeadsUpDisplay/Tap.png" gauge_needle_width="15" height="200" type="Gauge" gauge_needle_height="93" gauge_background_image="../Graphics/HeadsUpDisplay/Tachometer_LightDial.png" min_value="0.0" width="200" y="0.42" variable="DS_Tachometer" gauge_needle_image="../Graphics/HeadsUpDisplay/NeedleEdited.png" x="0.29" gauge_max_angle="135.0" gauge_tap_width="20" />
+        <Speedometer_Analog gauge_min_angle="-135.0" max_value="60.0" gauge_tap_image="../Graphics/HeadsUpDisplay/Tap.png" gauge_needle_width="15" height="200" type="Gauge" gauge_needle_height="93" gauge_background_image="../Graphics/HeadsUpDisplay/Speedometer_LightDial.png" min_value="0.0" width="200" y="0.42" variable="DS_Speedometer" gauge_needle_image="../Graphics/HeadsUpDisplay/NeedleEdited.png" x="0.71" gauge_max_angle="135.0" gauge_tap_width="20" />
+        <GearIndicator height="200" type="Number Display" background_image="../Graphics/HeadsUpDisplay/ImageofNothing.png" width="200" y="0.86" x="0.50">
+          <Value position_y="80" height="40" font="" font_color="0.94921875;0.56640625;0;1" alignment="CENTER_CENTER" width="40" position_x="80" variable="DS_GearIndicator" static="No" display_zeros="No" numdecimals="1" />
+        </GearIndicator>
+        <FuelIndicator_Analog gauge_min_angle="-45.0" max_value="700.0" gauge_tap_image="../Graphics/HeadsUpDisplay/Tap.png" gauge_needle_width="12" height="200" type="Gauge" gauge_needle_height="86" gauge_background_image="../Graphics/HeadsUpDisplay/FuelGauge_LightDial.png" min_value="0.0" width="200" y="0.80" variable="DS_FuelIndicator" gauge_needle_image="../Graphics/HeadsUpDisplay/NeedleEdited.png" x="0.26" gauge_max_angle="45.0" gauge_tap_width="16" />
+        <InclinometerRoll_Digital height="200" type="Number Display" background_image="../Graphics/HeadsUpDisplay/ImageofNothing.png" width="200" y="0.76" x="0.74">
+          <Value position_y="80" height="40" font="" font_color="0.94921875;0.56640625;0;1" alignment="CENTER_CENTER" width="40" position_x="80" variable="DS_Inclinometer_Y_Absolute" static="No" display_zeros="No" numdecimals="1" />
+        </InclinometerRoll_Digital>
+        <InclinometeRoll_Analog gauge_min_angle="-45" max_value="45" gauge_tap_image="../Graphics/HeadsUpDisplay/Tap.png" gauge_needle_width="12" height="200" type="Gauge" gauge_needle_height="92" gauge_background_image="../Graphics/HeadsUpDisplay/Inclinometer(Rolling)_LightDial.png" min_value="-45" width="200" y="0.80" variable="DS_Inclinometer_Y" gauge_needle_image="../Graphics/HeadsUpDisplay/NeedleEdited.png" x="0.74" gauge_max_angle="45" gauge_tap_width="16" />
+        <ForwardGearIndicator height="200" type="Number Display" background_image="../Graphics/HeadsUpDisplay/ImageofNothing.png" width="200" y="0.8745" x="0.45">
+          <ForwardGear position_y="80" height="40" font="" font_color="0.94921875;0.56640625;0;1" alignment="CENTER_CENTER" width="40" position_x="80" variable="DS_GearIndicator" static="No" display_zeros="No" numdecimals="0" />
+        </ForwardGearIndicator>
+        <ReverseGearIndicator height="200" type="Number Display" background_image="../Graphics/HeadsUpDisplay/ImageofNothing.png" width="200" y="0.8745" x="0.55">
+          <ReverseGear position_y="80" height="40" font="" font_color="0.94921875;0.56640625;0;1" alignment="CENTER_CENTER" width="40" position_x="80" variable="DS_ReverseGearIndicator" static="No" display_zeros="No" numdecimals="0" />
+        </ReverseGearIndicator>
+        <Speedometer_Digital height="200" type="Number Display" background_image="../Graphics/HeadsUpDisplay/ImageofNothing.png" width="200" y="0.34" x="0.71">
+          <Value position_y="80" height="40" font="" font_color="0.94921875;0.56640625;0;1" alignment="CENTER_CENTER" width="40" position_x="80" variable="DS_Speedometer" static="No" display_zeros="No" numdecimals="1" />
+        </Speedometer_Digital>
+        <Speedometer_Digital_New height="200" type="Number Display" background_image="../Graphics/HeadsUpDisplay/ImageofNothing_kmph.png" width="200" y="0.34" x="0.71">
+          <Value position_y="80" height="40" font="" font_color="0.94921875;0.56640625;0;1" alignment="CENTER_CENTER" width="40" position_x="80" variable="DS_Speedometer" static="No" display_zeros="No" numdecimals="1" />
+        </Speedometer_Digital_New>
+        <BucketTiltAngle_Analog gauge_min_angle="-85.0" max_value="85" gauge_tap_image="../Graphics/HeadsUpDisplay/Bucket_Tap.png" gauge_needle_width="258" height="200" type="Gauge" gauge_needle_height="12" gauge_background_image="../Graphics/HeadsUpDisplay/BucketTiltAngle.png" min_value="-85" width="200" y="0.65" variable="DS_BucketTiltAngle" gauge_needle_image="../Graphics/HeadsUpDisplay/Bucket_Needle_New.png" x="0.26" gauge_max_angle="85.0" gauge_tap_width="16" />
+        <BucketHeight_Analog max_value="3.5" height="180" type="Bar Diagram" background_image="../Graphics/HeadsUpDisplay/ImageofNothing.png" bar_margin_top="0" bar_margin_left="25" foreground_image="../Graphics/HeadsUpDisplay/BucketHeight.png" min_value="0" width="180" bar_margin_right="105" y="0.63" variable="DS_BucketHeightPosition" bar_margin_bottom="0" x="0.74">
+          <top_color g="0.56640625" b="0" a="0.75" r="0.94921875" />
+          <bottom_color g="0.56640625" b="0" a="0.75" r="0.94921875" />
+        </BucketHeight_Analog>
+        <MaterialWeight_Digital height="200" type="Number Display" background_image="../Graphics/HeadsUpDisplay/ImageofNothing_kg.png" width="200" y="0.41" x="0.50">
+          <Weight position_y="80" height="40" font="" font_color="0.94921875;0.56640625;0;1" alignment="CENTER_CENTER" width="40" position_x="80" variable="DS_WeightInBucket" static="No" display_zeros="No" numdecimals="0" />
+        </MaterialWeight_Digital>
+      </Meters>
+      <HudImage>
+        <Hud_LowFuel scalex="1" scaley="1" alpha="1" imageFile="../Graphics/HeadsUpDisplay/LowfuelMessage.png" y="0.5" x="0.5" displaytime="0" />
+        <Hud_InclinometerCritical scalex="1" scaley="1" alpha="1" imageFile="../Graphics/HeadsUpDisplay/RolloverMessage.png" y="0.5" x="0.5" displaytime="0" />
+        <Hud_GearBox scalex="1" scaley="1" alpha="1" imageFile="../Graphics/HeadsUpDisplay/GearBox.PNG" y="0.86" x="0.50" displaytime="20000" />
+        <Hud_NeutralGear scalex="1" scaley="1" alpha="1" imageFile="../Graphics/HeadsUpDisplay/NeutralGear.png" y="0.86" x="0.50" displaytime="0" />
+        <Hud_ParkingBrake scalex="1" scaley="1" alpha="1" imageFile="../Graphics/HeadsUpDisplay/ParkingBrake.png" y="0.86" x="0.50" displaytime="0" />
+        <Hud_GearBox_Forward scalex="1" scaley="1" alpha="1" imageFile="../Graphics/HeadsUpDisplay/GearBox_Forward.PNG" y="0.86" x="0.50" displaytime="0" />
+        <Hud_GearBox_Backward scalex="1" scaley="1" alpha="1" imageFile="../Graphics/HeadsUpDisplay/GearBox_Backward.PNG" y="0.86" x="0.50" displaytime="0" />
+      </HudImage>
+      <Sounds />
+    </VisualHelpers>
+    <Trackers />
+    <ObjectGrabber>
+      <HudActivator_NeutralGear LinkInitializationToTask="" UnLockingSound="" UnLockingConditions="Condition_NeutralGear_Off" LockingSound="" LockingConditions="Condition_NeutralGear_On" LinkToInput="">
+        <ForceConstraints />
+        <ParticleConstraints />
+        <ParticleRopes />
+        <LocatorAssistant />
+        <MBSConstraints />
+        <WoodyTreeSaws />
+        <WoodyTreeActivators />
+        <VisualHelperActivators>
+          <NeutralGearDisplay>
+            <LockedInstructions Text="" HudImage="Hud_NeutralGear" ImageCollection="" Graphic="" Sound="" />
+            <UnlockedInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+          </NeutralGearDisplay>
+        </VisualHelperActivators>
+      </HudActivator_NeutralGear>
+      <HudActivator_ParkingBrake LinkInitializationToTask="" UnLockingSound="" UnLockingConditions="Condition_ParkingBrake_Off" LockingSound="" LockingConditions="Condition_ParkingBrake_On" LinkToInput="">
+        <ForceConstraints />
+        <ParticleConstraints />
+        <ParticleRopes />
+        <LocatorAssistant />
+        <MBSConstraints />
+        <WoodyTreeSaws />
+        <WoodyTreeActivators />
+        <VisualHelperActivators>
+          <ParkingBrakeDisplay>
+            <LockedInstructions Text="" HudImage="Hud_ParkingBrake" ImageCollection="" Graphic="" Sound="" />
+            <UnlockedInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+          </ParkingBrakeDisplay>
+        </VisualHelperActivators>
+      </HudActivator_ParkingBrake>
+      <HudActivator_ForwardGear LinkInitializationToTask="" UnLockingSound="" UnLockingConditions="Condition_ForwardGear_Off" LockingSound="" LockingConditions="Condition_ForwardGear_On" LinkToInput="">
+        <ForceConstraints />
+        <ParticleConstraints />
+        <ParticleRopes />
+        <LocatorAssistant />
+        <MBSConstraints />
+        <WoodyTreeSaws />
+        <WoodyTreeActivators />
+        <VisualHelperActivators>
+          <ForwardGearDisplay>
+            <LockedInstructions Text="" HudImage="Hud_GearBox_Forward" ImageCollection="" Graphic="" Sound="" />
+            <UnlockedInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+          </ForwardGearDisplay>
+        </VisualHelperActivators>
+      </HudActivator_ForwardGear>
+      <HudActivator_ReverseGear LinkInitializationToTask="" UnLockingSound="" UnLockingConditions="Condition_ReverseGear_Off" LockingSound="" LockingConditions="Condition_ReverseGear_On" LinkToInput="">
+        <ForceConstraints />
+        <ParticleConstraints />
+        <ParticleRopes />
+        <LocatorAssistant />
+        <MBSConstraints />
+        <WoodyTreeSaws />
+        <WoodyTreeActivators />
+        <VisualHelperActivators>
+          <ReverseGearDisplay>
+            <LockedInstructions Text="" HudImage="Hud_GearBox_Backward" ImageCollection="" Graphic="" Sound="" />
+            <UnlockedInstructions Text="" HudImage="" ImageCollection="" Graphic="" Sound="" />
+          </ReverseGearDisplay>
+        </VisualHelperActivators>
+      </HudActivator_ReverseGear>
+    </ObjectGrabber>
+  </TaskDefinitions>
+</DMInputFile>
